@@ -1,0 +1,19 @@
+.products {
+
+    .cart_count {
+        font-size: 1.6rem;
+        font-weight: 500;
+        margin-right: 2rem;
+        color: $color-grey-light-1;
+    }
+
+    &__main {
+        padding: 2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        @media only screen and (max-width: $bp-medium) {
+            flex-direction: column;
+        }
+    }
+}

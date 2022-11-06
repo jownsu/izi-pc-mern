@@ -1,0 +1,28 @@
+.pagination {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+    list-style-type: none;
+
+    li {
+        background: $color-grey-dark-4;
+        padding: .7rem 1.7rem;
+        border-radius: 3px;
+        box-shadow: $shadow-light;
+        a {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        &.active, &:hover {
+            a {
+                color: #fff;
+            }
+            background: $color-primary;
+        }
+    }
+
+
+
+}

@@ -1,0 +1,111 @@
+// COLOR VARIABLES
+$color-primary: #A27B5C;
+$color-secondary: #3F4E4F;
+$color-secondary-light: #5E7173;
+$color-red: #F6403F;
+$color-blue: #9D96C5;
+
+$color-grey-light-1: #DCD7C9;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #3F4E4F;
+$color-grey-dark-2: #2C3639;
+$color-grey-dark-3: #1F2227;
+$color-grey-dark-4: #323032;
+
+// FONT VARIABLES
+$font-primary: 'Montserrat', sans-serif;
+
+// BREAKPOINTS
+
+$bp-largest  : 75em;    // 1200px / 16px = 75em
+$bp-large    : 62.5em;  // 1000px / 16px = 62.5em
+$bp-medium   : 50em;    // 800px / 16px = 50em
+$bp-small    : 43.75em;  // 700px / 16px = 43.75em
+$bp-smallest : 31.25em;  // 500px / 16px = 31.25em
+
+// SHAOES
+$shadow: 2px 2px 5px 2px rgba(0, 0, 0, .3);
+$shadow-light: 2px 2px 5px 2px rgba(0, 0, 0, .1);
+$shadow-dark: 2px 2px 5px 2px rgba(0, 0, 0, .5);
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+img, a, div {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: $color-blue;
+}
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+}
+
+body {
+    font-family: $font-primary;
+    color: $color-grey-light-1;
+    font-weight: 400;
+    line-height: 1.6;
+    background-image: linear-gradient(to right, $color-grey-light-1, $color-grey-dark-1);
+}
+
+.container {
+    width: 100%;
+    max-width: 120rem;
+    margin: 5rem auto;
+    background: $color-secondary;
+    border-radius: 5px;
+    box-shadow: $shadow-dark;
+    overflow: hidden;
+
+    @media only screen and (max-width: $bp-largest) {
+        margin: 0 auto;
+        border-radius: 0;
+    }
+
+    .nav {
+        background: $color-grey-dark-3;
+        padding: 1rem 2rem;
+        border-bottom: 2px solid $color-grey-light-1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        &__logo {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        &__side {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+}
+
+.sm-container {
+    width: 100%;
+    max-width: 50rem;
+    margin: 5rem auto;
+    padding: 2rem;
+    background: $color-secondary;
+    border-radius: 5px;
+    box-shadow: $shadow-light;
+}
+

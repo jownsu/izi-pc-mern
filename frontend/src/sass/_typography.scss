@@ -1,0 +1,56 @@
+
+.heading-1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+.heading-2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+
+.fw-500 {
+    font-weight: 500 !important;
+}
+.fw-bold {
+    font-weight: bold !important;
+}
+
+.fs-sm {
+    font-size: 1.3rem;
+}
+
+.fs-md {
+    font-size: 1.6rem;
+}
+
+.fs-lg {
+    font-size: 2rem;
+}
+
+.btn-primary {
+    padding: .7rem 3rem;
+    background: $color-primary;
+    border-radius: 5px;
+    box-shadow: $shadow;
+    border: none;
+    color: $color-grey-light-1;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.btn-danger {
+    padding: .7rem 2rem;
+    background: $color-red;
+    border-radius: 5px;
+    box-shadow: $shadow;
+    border: none;
+    color: $color-grey-light-1;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.error {
+    color: $color-red;
+}
