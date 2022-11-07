@@ -1,4 +1,4 @@
-[
+const DATA = [
     {
         "id": "106",
         "category_id": "1",
@@ -252,3 +252,15 @@
         "updated_at": null
     }
 ]
+
+export const getAll = () => {
+    return DATA;
+}
+
+export const getById = (id) => {
+    return DATA.find(item => item.id === id)
+}
+
+export const getFive = () => {
+    return DATA.slice(0, 5)
+}

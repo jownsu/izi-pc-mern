@@ -1,0 +1,124 @@
+.product {
+
+    &__back {
+        margin: 2rem 0 0 2rem;
+    }
+
+    &__main {
+        display: grid;
+        grid-template-columns: 35rem 1fr;
+        @media only screen and (max-width: $bp-medium) {
+            grid-template-columns: 1fr 1fr;
+        }
+        gap: 2rem;
+        padding: 2rem;
+        align-items: flex-start;
+
+
+        > div {
+            background: $color-secondary-light;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: $shadow;
+        }
+    }
+
+    .product-images {
+        grid-column: 1 / 2;
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 40rem;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+
+        &__main {
+            margin-bottom: 1rem;
+        }
+
+        &__sub-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        &__sub {
+            flex: 1;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .product-description {
+        grid-column: 2 / 3;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 1 / -1;
+        }
+ 
+        &__nav {
+            background: $color-grey-dark-4;
+            padding: 1.5rem;
+            border-bottom: 2px solid $color-grey-light-1;
+        }
+
+        &__main {
+            padding: 2rem;
+            font-size: 1.4rem;
+        }
+
+        &__quantity {
+            border-top: 1px solid $color-grey-light-1;
+            padding: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            label {
+                margin-left: auto;
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+            .input_quantity {
+                padding: .5rem;
+                font-family: inherit;
+            }
+            .btn-primary {
+                margin-right: 2rem;
+            }
+        }
+    }
+
+    .product-similar {
+        grid-column: 1 / 3;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 1 / -1;
+        }
+
+        &__main {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.3rem;
+            @media only screen and (max-width: $bp-medium) {
+                padding: 1rem;
+                gap: 1rem;
+            }
+        }
+
+        &__nav {
+            background: $color-grey-dark-4;
+            padding: 1.5rem;
+            border-bottom: 2px solid $color-grey-light-1;
+        }
+    }
+}

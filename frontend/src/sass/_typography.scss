@@ -3,11 +3,18 @@
     font-size: 3rem;
     font-weight: 700;
 }
+
 .heading-2 {
     font-size: 1.8rem;
     font-weight: 700;
 }
 
+.cart_count {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-right: 2rem;
+    color: $color-grey-light-1;
+}
 
 .fw-500 {
     font-weight: 500 !important;
@@ -28,9 +35,11 @@
     font-size: 2rem;
 }
 
-.btn-primary {
-    padding: .7rem 3rem;
-    background: $color-primary;
+.btn-primary, 
+.btn-danger, 
+.btn-light
+{
+    padding: .7rem 2rem;
     border-radius: 5px;
     box-shadow: $shadow;
     border: none;
@@ -39,16 +48,18 @@
     font-weight: 600;
     font-size: 1.4rem;
 }
+
+.btn-primary {
+    background: $color-primary;
+}
+
 .btn-danger {
-    padding: .7rem 2rem;
     background: $color-red;
-    border-radius: 5px;
-    box-shadow: $shadow;
-    border: none;
-    color: $color-grey-light-1;
-    font-family: inherit;
-    font-weight: 600;
-    font-size: 1.4rem;
+}
+
+.btn-light {
+    background: $color-grey-light-1;
+    color: $color-grey-dark-1;
 }
 
 .error {

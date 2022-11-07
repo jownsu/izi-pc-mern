@@ -1,18 +1,18 @@
 import React from 'react'
 import ProductItem from './ProductItem'
-import productData from '../data/products.json'
 import Pagination from './Pagination'
 
-function ProductList() {
+function ProductList({data}) {
+
     return (
         <div className="product_list">
             <div className="product_list__nav">
                 <p className='heading-2'>All Products (page 1)</p>
                 <div className="product_list__links">
-                    <a href="#">First</a>
-                    <a href="#">Prev</a>
+                    <a href="/">First</a>
+                    <a href="/">Prev</a>
                     <p>1</p>
-                    <a href="#">Next</a>
+                    <a href="/">Next</a>
                 </div> 
             </div>
             <div className="product_list__filter">
@@ -25,7 +25,7 @@ function ProductList() {
             <div className="product_list__main">
                 <div className="product_list__item">
                     {
-                        productData.map(item => {
+                        data.map(item => {
                         let images = JSON.parse(item.images);
 
                         return <ProductItem 

@@ -6,7 +6,6 @@ $color-red: #F6403F;
 $color-blue: #9D96C5;
 
 $color-grey-light-1: #DCD7C9;
-$color-grey-light-2: #aaa;
 
 $color-grey-dark-1: #3F4E4F;
 $color-grey-dark-2: #2C3639;
@@ -18,9 +17,9 @@ $font-primary: 'Montserrat', sans-serif;
 
 // BREAKPOINTS
 
-$bp-largest  : 75em;    // 1200px / 16px = 75em
-$bp-large    : 62.5em;  // 1000px / 16px = 62.5em
-$bp-medium   : 50em;    // 800px / 16px = 50em
+$bp-largest  : 75em;     // 1200px / 16px = 75em
+$bp-large    : 62.5em;   // 1000px / 16px = 62.5em
+$bp-medium   : 50em;     // 800px / 16px = 50em
 $bp-small    : 43.75em;  // 700px / 16px = 43.75em
 $bp-smallest : 31.25em;  // 500px / 16px = 31.25em
 
@@ -96,7 +95,6 @@ body {
             align-items: center;
         }
     }
-
 }
 
 .sm-container {
