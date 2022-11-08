@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getById, getFive } from '../data/products'
 import ProductItem from '../components/ProductItem'
+import Nav from '../components/Nav'
 
 function Product() {
 
@@ -21,13 +22,7 @@ function Product() {
 
     return (
     <div className="container product">
-        <div className="nav">
-            <div className="nav__logo">IZI PC</div>
-            <div className="nav__side">
-                <Link className='cart_count'>Shopping Cart (0)</Link>
-                <Link to='/login' className="btn-danger">Logout</Link>
-            </div>
-        </div>
+        <Nav />
         <Link className='btn-light product__back' to='/'>Go Back</Link>
         <div className="product__main">
             <div className="product-images">

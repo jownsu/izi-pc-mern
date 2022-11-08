@@ -1,0 +1,47 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+
+    tr, th {
+        border: 2px solid $color-grey-dark-4;
+    }
+
+    &__heading {
+        background: $color-grey-dark-4;
+        font-size: 1.6rem;
+        th {
+            padding: 1rem;
+        }
+    }   
+     
+    tbody {
+        tr:nth-child(odd) {
+            background: $color-grey-dark-3;
+        }
+    }
+
+
+    &__quantity {
+        width: 30%;
+        text-align: center;
+
+        form {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+
+    &__quantity-input {
+        background: none;
+        border: none;
+        border-bottom: 2px solid $color-primary;
+        padding: .3rem;
+        font-family: inherit;
+        color: $color-grey-light-1
+    }
+
+    td {
+        font-size: 1.6rem;
+        padding: 1rem 1rem;
+    }
+}
