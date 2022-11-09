@@ -95,6 +95,26 @@ body {
             flex-direction: row;
             align-items: center;
         }
+
+        &__links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            font-size: 1.5rem;
+
+            a {
+                color: $color-grey-light-1;
+            }
+        }
+    }
+
+    .admin-links {
+
+        @media only screen and (max-width: $bp-smallest) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
 }
 

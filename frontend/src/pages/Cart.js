@@ -34,8 +34,8 @@ function Cart() {
         <div className="container cart">
             <Nav />
             <div className="cart__main">
-                <div style={{overflowX: 'auto'}}>
-                    <table className='table'>
+                <div className='table'>
+                    <table>
                         <thead className='table__heading'>
                             <tr>
                                 <th>Item</th>
@@ -46,7 +46,7 @@ function Cart() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Rakk Illis</td>
+                                <td className='text-left'>Rakk Illis</td>
                                 <td>₱1575</td>
                                 <td className='table__quantity'>
                                     <form>
@@ -58,7 +58,7 @@ function Cart() {
                                 <td>₱1575</td>
                             </tr>
                             <tr>
-                                <td>Deepcool KG722 65%</td>
+                                <td className='text-left'>Deepcool KG722 65%</td>
                                 <td>₱1575</td>
                                 <td className='table__quantity'>
                                     <form>
