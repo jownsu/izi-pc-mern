@@ -9,6 +9,7 @@ import AdminLogin from './pages/AdminLogin';
 import Orders from './pages/Orders';
 import AdminProducts from './pages/AdminProducts';
 import Order from './pages/Order';
+import Success from './pages/Success';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route exact path='/orders' element={<Orders />}></Route>
                 <Route exact path='/order/:id' element={<Order />}></Route>
                 <Route exact path='/dashboard/products' element={<AdminProducts />}></Route>
+                <Route exact path='/order/success' element={<Success />}></Route>
             </Routes>
         </Router>
     );

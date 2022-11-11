@@ -59,6 +59,23 @@
     }
 }
 
+.delete_form {
+    p {
+        text-align: center;
+        font-size: 1.5rem;
+        span {
+            font-weight: bold;
+        }
+        margin-bottom: 2rem;
+    }
+
+    &__footer {
+        display: flex;
+        gap: 5rem;
+        justify-content: center;
+    }
+}
+
 .customOption {
     padding: .5rem 1rem;
     display: flex;

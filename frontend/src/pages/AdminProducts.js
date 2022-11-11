@@ -3,21 +3,16 @@ import AdminNav from "../components/AdminNav";
 import { SlTrash, SlPencil } from "react-icons/sl";
 import { CgClose } from "react-icons/cg";
 import Pagination from "../components/Pagination";
-import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import Select from "react-select"
 import { getFive } from "../data/products";
 
 function AdminProducts() {
     const products = getFive();
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState({addEdit: false, delete: false});
 
-    const openModal = () => setModalIsOpen(true);
-    const closeModal = () => setModalIsOpen(false);
-
-    const handleNewProductPress = () => {
-        openModal()
-    }
+    const openModal = (type) => setModalIsOpen(prevState => ({...prevState, [type]: true}));
+    const closeModal = (type) => setModalIsOpen(prevState => ({...prevState, [type]: false}));
 
     const CustomOption = ({ innerProps, isDisabled, label }) => {
         if(!isDisabled){
@@ -26,7 +21,7 @@ function AdminProducts() {
                     {label}
                     <div >
                         <button className="btn-blue" ><SlPencil /></button>
-                        <button className="btn-danger" ><CgClose /></button>
+                        <button className="btn-danger"><CgClose /></button>
                     </div>
                 </div>
             )
@@ -45,7 +40,7 @@ function AdminProducts() {
                     <form>
                         <input type="text" name="search" placeholder="Search" />
                     </form>
-                    <button className="btn-primary" onClick={handleNewProductPress} >Add New Product</button>
+                    <button className="btn-primary" onClick={() => openModal('addEdit')} >Add New Product</button>
                 </div>
                 <div className="table">
                     <table>
@@ -73,13 +68,10 @@ function AdminProducts() {
                                         <td>{item.inventory}</td>
                                         <td>{item.sold}</td>
                                         <td>
-                                            <form>
-                                                <input type="hidden" name="id" value={item.id} />
-                                                <button className="btn-light mr-3">Edit</button>
-                                                <button type="submit" className="btn-danger">
-                                                    <SlTrash />
-                                                </button>
-                                            </form>
+                                            <button className="btn-light mr-3">Edit</button>
+                                            <button type="submit" className="btn-danger" onClick={() => openModal('delete')}>
+                                                <SlTrash />
+                                            </button>
                                         </td>
                                     </tr>
                                 );
@@ -90,15 +82,15 @@ function AdminProducts() {
             </div>
 
             <Modal 
-                isOpen={modalIsOpen} 
-                onRequestClose={closeModal} 
+                isOpen={modalIsOpen.addEdit} 
+                onRequestClose={() => closeModal('addEdit')} 
                 className='modal' 
-                contentLabel='Add Note'
+                // contentLabel='Add Note'
             >
                 <div className="form">
                     <div className="form__header">
                         <p className="heading-2">Add a new product</p>
-                        <button className="btn-danger" onClick={closeModal}><CgClose /></button>
+                        <button className="btn-danger" onClick={() => closeModal('addEdit')}><CgClose /></button>
                     </div>
                     <form>
                         <div className="form__main">
@@ -142,13 +134,29 @@ function AdminProducts() {
                         </div>
 
                         <div className="form__footer">
-                            <button className="btn-danger" onClick={closeModal}>Cancel</button>
+                            <button className="btn-danger" onClick={() => closeModal('addEdit')}>Cancel</button>
                             <button type="submit" className="btn-primary">Add</button>
                         </div>
                     </form>
   
                     
                 </div>
+            </Modal>
+
+            <Modal 
+                isOpen={modalIsOpen.delete} 
+                onRequestClose={() => closeModal('delete')} 
+                className='modal' 
+                // contentLabel='Add Note'
+            >
+                <form className="delete_form">
+                    <p>Are you sure you want to delete product "<span>A4teck KRS-85</span>" (ID: <span>183</span>)</p>
+                    <div className="delete_form__footer">
+                        <button className="btn-danger">Yes</button>
+                        <button className="btn-light" onClick={() => closeModal('delete')}>No</button>
+                    </div>
+                </form>
+
             </Modal>
 
             <Pagination />
