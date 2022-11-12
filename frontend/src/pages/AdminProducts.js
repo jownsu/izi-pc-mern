@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AdminNav from "../components/AdminNav";
 import { SlTrash, SlPencil } from "react-icons/sl";
 import { CgClose } from "react-icons/cg";
+import { AiFillCloseCircle } from 'react-icons/ai'
 import Pagination from "../components/Pagination";
 import Modal from "react-modal";
 import Select from "react-select"
@@ -9,10 +10,23 @@ import { getFive } from "../data/products";
 
 function AdminProducts() {
     const products = getFive();
-    const [modalIsOpen, setModalIsOpen] = useState({addEdit: false, delete: false});
+    const [modalIsOpen, setModalIsOpen] = useState({addEdit: false, delete: false, update: false});
+    const [uploadImages, setUploadImages] = useState([])
+
+    const handleImageChange = (e) => {
+        const selectedFiles = Array.from(e.target.files);
+
+        const imagesArr = selectedFiles.map(item => URL.createObjectURL(item))
+        setUploadImages(imagesArr)
+        console.log(imagesArr);
+    }
 
     const openModal = (type) => setModalIsOpen(prevState => ({...prevState, [type]: true}));
     const closeModal = (type) => setModalIsOpen(prevState => ({...prevState, [type]: false}));
+
+    const handleRemoveImage = (img) => {
+        setUploadImages(prevState => prevState.filter(item => item !== img))
+    }
 
     const CustomOption = ({ innerProps, isDisabled, label }) => {
         if(!isDisabled){
@@ -20,8 +34,8 @@ function AdminProducts() {
                 <div {...innerProps} className="customOption">
                     {label}
                     <div >
-                        <button className="btn-blue" ><SlPencil /></button>
-                        <button className="btn-danger"><CgClose /></button>
+                        <button className="btn-blue" onClick={() => openModal('update')}><SlPencil /></button>
+                        <button className="btn-danger" onClick={() => openModal('delete')}><CgClose /></button>
                     </div>
                 </div>
             )
@@ -67,8 +81,8 @@ function AdminProducts() {
                                         <td>{item.name}</td>
                                         <td>{item.inventory}</td>
                                         <td>{item.sold}</td>
-                                        <td>
-                                            <button className="btn-light mr-3">Edit</button>
+                                        <td className="table__action">
+                                            <button className="btn-light">Edit</button>
                                             <button type="submit" className="btn-danger" onClick={() => openModal('delete')}>
                                                 <SlTrash />
                                             </button>
@@ -94,18 +108,17 @@ function AdminProducts() {
                     </div>
                     <form>
                         <div className="form__main">
-                            <div>
+                            <div className="form__group">
                                 <label htmlFor="name">Name:</label>
                                 <input type="text" name="name" id="name" />
                             </div>
-                            <div>
+                            <div className="form__group">
                                 <label htmlFor="description">Description:</label>
                                 <textarea name="description" id="description"></textarea>
                             </div>
-                            <div>
+                            <div className="form__group">
                                 <label htmlFor="category">Categories:</label>
                                 <Select 
-                                    isClearable 
                                     options={[
                                             { value:'mouse', label: 'Mouse' },
                                             { value:'keyboard', label: 'Keyboard' },
@@ -115,21 +128,43 @@ function AdminProducts() {
                                     components={{Option: CustomOption}}
                                 />
                             </div>
-                            <div>
+                            <div className="form__group">
                                 <label htmlFor="new_category">Or add new category:</label>
                                 <input type="text" name="new_category" id="new_category" />
                             </div>
-                            <div>
+                            <div className="form__group">
                                 <label htmlFor="price">Price:</label>
                                 <input type="number" name="price" id="price" />
                             </div>
-                            <div>
+                            <div className="form__group">
                                 <label htmlFor="quantity">Quantity (Inventory):</label>
                                 <input type="number" name="quantity" id="quantity" />
                             </div>
-                            <div>
-                                <label htmlFor="images">Images:</label>
-                                <input type="file" name="images" id="images" />
+                            <div className="form__group upload_image">
+                                <label>Images:</label>
+                                <label htmlFor="images">
+                                    <span className="btn-light">Upload</span>
+                                    <input 
+                                        type="file" 
+                                        name="images" 
+                                        id="images" 
+                                        multiple
+                                        accept="image/png, image/jpeg, image/webp"
+                                        onChange={handleImageChange}
+                                    />
+                                </label>
+                                <p>Maximum of 5 images and first image will be the main.</p>
+                            </div>
+                            <div className="images">
+                                    { uploadImages.map((item, index) => (
+                                        <div onClick={() => handleRemoveImage(item)}>
+                                            <img 
+                                                src={item}
+                                                alt={`upload-${index}`}
+                                            />
+                                            <AiFillCloseCircle className="images__remove" />
+                                        </div>
+                                    )) }
                             </div>
                         </div>
 
@@ -138,8 +173,6 @@ function AdminProducts() {
                             <button type="submit" className="btn-primary">Add</button>
                         </div>
                     </form>
-  
-                    
                 </div>
             </Modal>
 
@@ -147,7 +180,6 @@ function AdminProducts() {
                 isOpen={modalIsOpen.delete} 
                 onRequestClose={() => closeModal('delete')} 
                 className='modal' 
-                // contentLabel='Add Note'
             >
                 <form className="delete_form">
                     <p>Are you sure you want to delete product "<span>A4teck KRS-85</span>" (ID: <span>183</span>)</p>
@@ -156,7 +188,21 @@ function AdminProducts() {
                         <button className="btn-light" onClick={() => closeModal('delete')}>No</button>
                     </div>
                 </form>
+            </Modal>
 
+            <Modal 
+                isOpen={modalIsOpen.update} 
+                onRequestClose={() => closeModal('update')} 
+                className='modal' 
+            >
+                <form className="update_form">
+                <p>Update "<span>Laptop</span>" category.</p>
+                    <input type="text" defaultValue={'Laptop'} />
+                    <div className="update_form__footer">
+                        <button className="btn-primary">Update</button>
+                        <button className="btn-light" onClick={() => closeModal('update')}>Cancel</button>
+                    </div>
+                </form>
             </Modal>
 
             <Pagination />

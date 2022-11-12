@@ -57,6 +57,14 @@
         }
     }
 
+    &__action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 11rem;
+        gap: 1rem;
+    }
+
     td {
         font-size: 1.6rem;
         padding: 1rem 1rem;

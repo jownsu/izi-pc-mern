@@ -27,60 +27,77 @@
         }
     }
 
-    &__payment {
-        padding: 0 2rem;
-        display: flex;
-        gap: 2rem;
+    &__payment{
 
-        @media only screen and (max-width: $bp-medium) {
-            flex-direction: column;
+        .same {
+            input {
+                margin-right: 1rem;
+            }
         }
 
-        & > div {
+        form {
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+            @media only screen and (max-width: $bp-medium) {
+                flex-direction: column;
+            }
+        }
+
+        form > div {
             flex: 1;
             padding: 2rem;
             border-radius: 5px;
             box-shadow: $shadow;
             background: $color-secondary-light;
+            font-size: 1.4rem;
 
-            form {
-                font-size: 1.4rem;
-
-                div {
-                    margin: 1rem 0;
-                    label {
-                        display: inline-block;
-                        width: 12rem ;
-                        @media only screen and (max-width: $bp-smallest) {
-                            display: block;
-                        }
-                    }
-
-                    input {
-                        font-family: inherit;
-                        padding: .5rem 1rem;
-                        border-radius: 3px;
-                    }
-
-                    .error {
-                        margin-top: .5rem;
-                        margin-left: 12rem;
-                        color: rgb(255, 40, 40);
-                    }
-                    #exp_month {
-                        width: 8rem;
-                    }
-                    #exp_year {
-                        width: 8rem;
+            div {
+                margin: 1rem 0;
+                label {
+                    display: inline-block;
+                    width: 12rem ;
+                    @media only screen and (max-width: $bp-smallest) {
+                        display: block;
+                        text-align: center;
+                        width: 100%;
                     }
                 }
 
+                input {
+                    font-family: inherit;
+                    padding: .5rem 1rem;
+                    border-radius: 3px;
+                    @media only screen and (max-width: $bp-smallest) {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+
+                .error {
+                    margin-top: .5rem;
+                    margin-left: 12rem;
+                    color: rgb(255, 40, 40);
+                    @media only screen and (max-width: $bp-smallest) {
+                        margin-left: 0;
+                        text-align: center;
+                    }
+                }
+                #exp_month {
+                    width: 8rem;
+                }
+                #exp_year {
+                    width: 8rem;
+                }
             }
         }
 
         .btn-primary {
             display: block;
             margin-left: auto;
+            @media only screen and (max-width: $bp-smallest) {
+                width: 100%;
+            }
         }
     }
 }
